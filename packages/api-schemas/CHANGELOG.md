@@ -1,3 +1,13 @@
+## 0.3.0 (2026-05-17)
+
+### 🚀 Features
+
+- **`/v1/requests` endpoint on the local dev server:** ([#599](https://github.com/repomesh/agentmark/pull/599))
+
+  - `@agentmark-ai/api-schemas`: New `schemas/requests.ts` module — `RequestsListParamsSchema` (pagination) plus `RequestResponseSchema` / `RequestsListResponseSchema` (`{ data, pagination }` envelope) describing the per-request (GENERATION-span) record. Additive — no changes to existing schemas.
+  - `@agentmark-ai/api-types`: Regenerated to include the new request types derived from the schemas above.
+  - `@agentmark-ai/cli`: Local dev server now serves `GET /v1/requests`, returning the canonical paginated envelope from the local trace store (the dashboard's "Requests" page is now backed by a real route instead of always 404-ing to an empty list). Internals: the former `local-prompt-logs-service` is renamed to `local-requests-service`, with matching `toRequestsListWire` wire mappers and an `openapi-spec.json` entry for `/v1/requests`.
+
 ## 0.2.0 (2026-05-12)
 
 ### 🚀 Features
